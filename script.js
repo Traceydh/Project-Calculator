@@ -18,13 +18,10 @@ function display() {
     const clearButton = document.querySelector('#clear');
     clearButton.onclick = () => {displayValue.textContent = ''};
 
-    //User presses operator, display operator, store as num1, store operator 
-    //User enters another number, display on screen
-    //user presses operator, display solution of num1 num2, store this as new num1, store new operator 
-    //OR user presses =, store num 2, execute operate function, display solution, store solution as num1 
     const equalButton = document.querySelector('#equal');
     equalButton.onclick = () => {
-        //how do i identify the operator? includes?
+        //Identify which operator is selected 
+        //ISSUE only identifies first operator, ignores the rest 
         let operator;
         if (string.includes('+')) {
             operator = '+';
@@ -36,13 +33,28 @@ function display() {
             operator = '÷';
         }
 
+        //split string 
+        //ISSUE can't handle more numbers
         let numArray = string.split(operator);
+        //store num1 and 2 
         let num2 = numArray[1].slice(0,-1);
+        console.log('num2: ' + num2);
         let num1 = numArray[0];
+        console.log('num1: ' + num1);
+        //calculate solution 
         let solution = operate(num1,operator,num2);
         displayValue.textContent = solution;
     }
+    console.log('string is: '+ string)
 }
+
+//functions can't return global variables 
+//user presses a number, store value as num1 
+//user presses an operator, stop storing value, store operator 
+//user presses another number, store value as num2 
+//user presses =, display solution, store solution as num1 
+
+
 
 //ADD function 
 const add = function(num1, num2) {
