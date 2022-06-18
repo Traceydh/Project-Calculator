@@ -1,3 +1,6 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
 .calculator-body {
     background-color: rgb(95, 128, 235);
     width: 450px;
@@ -7,7 +10,7 @@
     display: flex;
     flex-direction: column;
 }
-
+/* display styling */
 .display {
     background-color: lightgray;
     width: 90%;
@@ -17,6 +20,14 @@
     border-radius: 15px;
 }
 
+.display div {
+    font-size: 70px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+/*buttons*/
 .clear {
     margin: 20px 5%;
 }
@@ -33,10 +44,15 @@ button {
     font-size: 30px;
 }
 
+button:active {
+    transition: 0.2s;
+    background-color: blue;
+}
+/*Number and operator pad styling*/
 .all-buttons {
     display: flex;
     justify-content: space-around;
-
+    gap: 10px;
 }
 
 .numbers {
@@ -49,3 +65,4 @@ button {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
 }
+
