@@ -23,10 +23,10 @@ function display() {
         console.log('num1: ' + num1);
         operator = '+';
     }
-    //User enters another number, display on screen 
+    //User enters another number, display on screen
     //user presses operator, display solution of num1 num2, store this as new num1, store new operator 
-    //OR user presses =, display solution, store solution as num1
-    
+    //OR user presses =, store num 2, execute operate function, display solution, store solution as num1 
+
 }
 
 //ADD function 
