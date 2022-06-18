@@ -1,0 +1,7 @@
+.calculator-body {
+    background-color: rgb(95, 128, 235);
+    width: 450px;
+    height: 600px;
+    border-radius: 25px;
+    margin: 0 auto;
+}
