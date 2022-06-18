@@ -13,19 +13,25 @@ function display() {
     //User enters number, display number on screen 
     displayValue.textContent += this.value;
     let string = displayValue.textContent;
-    console.log(string);
+    console.log('string: '+ string);
     //User presses operator, display operator, store as num1, store operator 
     const plusButton = document.querySelector('#plus');
     let num1;
-    let operator;
+    let operator = '+';
     plusButton.onclick = () => {
         num1 = string.slice(0,-1);
         console.log('num1: ' + num1);
-        operator = '+';
     }
     //User enters another number, display on screen
     //user presses operator, display solution of num1 num2, store this as new num1, store new operator 
     //OR user presses =, store num 2, execute operate function, display solution, store solution as num1 
+    const equalButton = document.querySelector('#equal');
+    equalButton.onclick = () => {
+        let num2;
+        num2 = string.split('+');
+        console.log('num2: ' + num2[1].slice(0,-1));
+        console.log(operator);
+    }
 
 }
 
