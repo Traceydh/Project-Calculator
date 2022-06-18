@@ -10,23 +10,13 @@ allButtons.forEach(button => button.addEventListener('click', display));
 
 //Display number pressed and solution 
 function display() {
-    //clear display when AC is clicked 
-    displayValue.textContent += this.value;
-    if (this.value == 'AC') {
-        displayValue.textContent = '';
-    }
-    let string = displayValue.textContent;
-    //user enters num1 
-    //when operator is clicked, store num1
-    const plusButton = document.querySelector('#plus')
-    let num1;
-    plusButton.onclick = () => {
-        num1 = string.slice(0,-1);
-        console.log(num1);
-    }
-    //store operator 
-    //clear screen, user enters store num2 
-    //user press =, clear screen, display solution 
+
+
+    //User enters number, display number on screen 
+    //User presses operator, display operator, store as num1, store operator 
+    //User enters another number, display on screen 
+    //user presses operator, display solution of num1 num2, store this as new num1, store new operator 
+    //OR user presses =, display solution, store solution as num1
 
     
     //display solution 
