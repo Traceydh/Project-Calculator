@@ -24,8 +24,19 @@ function display() {
     //OR user presses =, store num 2, execute operate function, display solution, store solution as num1 
     const equalButton = document.querySelector('#equal');
     equalButton.onclick = () => {
-        let operator = '+';
-        let numArray = string.split('+');
+        //how do i identify the operator? includes?
+        let operator;
+        if (string.includes('+')) {
+            operator = '+';
+        } else if (string.includes('×')) {
+            operator = '×';
+        } else if (string.includes('−')) {
+            operator = '−';
+        } else if (string.includes('÷')) {
+            operator = '÷';
+        }
+
+        let numArray = string.split(operator);
         let num2 = numArray[1].slice(0,-1);
         let num1 = numArray[0];
         let solution = operate(num1,operator,num2);
