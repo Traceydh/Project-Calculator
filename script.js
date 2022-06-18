@@ -19,20 +19,22 @@ function display() {
     let num1;
     let operator = '+';
     plusButton.onclick = () => {
-        num1 = string.slice(0,-1);
-        console.log('num1: ' + num1);
+        return num1 = string.slice(0,-1);
     }
+    console.log(operator);
     //User enters another number, display on screen
     //user presses operator, display solution of num1 num2, store this as new num1, store new operator 
     //OR user presses =, store num 2, execute operate function, display solution, store solution as num1 
     const equalButton = document.querySelector('#equal');
     equalButton.onclick = () => {
-        let num2;
-        num2 = string.split('+');
-        console.log('num2: ' + num2[1].slice(0,-1));
-        console.log(operator);
+        let num2Array = string.split('+');
+        let num2 = num2Array[1].slice(0,-1);
+        console.log('num2: ' + num2);
+        console.log('operator: ' + operator);
+        console.log('num1: ' + num1);
+        let solution = operate(num1,operator,4);
+        console.log(solution);
     }
-
 }
 
 //ADD function 
