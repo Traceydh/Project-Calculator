@@ -11,14 +11,18 @@
 .display {
     background-color: lightgray;
     width: 90%;
-    height: 70px;
+    height: 90px;
     margin: 0 auto;
     margin-top: 30px;
     border-radius: 15px;
 }
 
 .clear {
-    margin: 20px auto;
+    margin: 20px 5%;
+}
+.clear button {
+    width: 120px;
+    background-color: rgb(238, 151, 151);
 }
 
 button {
@@ -27,4 +31,21 @@ button {
     border-radius: 10px;
     border: none;
     font-size: 30px;
+}
+
+.all-buttons {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 20px;
+}
+.operators {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
 }
