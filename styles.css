@@ -66,8 +66,8 @@ button {
 }
 
 button:active {
+    opacity: 50%;
     transition: 0.2s;
-    background-color: rgb(61, 61, 245);
 }
 /*Number and operator pad styling*/
 .all-buttons {
