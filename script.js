@@ -32,8 +32,7 @@ function display() {
         //need to reset string of displayValue  
     switch (this.value) {
         case '+':
-            //when this case happens num1 is stored 
-            //AS SOON as you press somethign else, num1 is no longer stored 
+            //why does num1 store 3 after a number is entered after pressing oeprator?
             num1 = Number(string.slice(0,-1));
             operator = '+';
             displayValue.textContent = operator;
