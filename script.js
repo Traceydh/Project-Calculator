@@ -15,7 +15,7 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
-//variables to think abou t
+//variables to think about
 // 1. the STRING that is being type
 // values that I want to store, num1, num2, operator 
 
@@ -32,7 +32,7 @@ function display() {
         //need to reset string of displayValue  
     switch (this.value) {
         case '+':
-            //why does num1 store 3 after a number is entered after pressing oeprator?
+            //why does num1 store 3 after a number is entered after pressing operator?
             num1 = Number(string.slice(0,-1));
             operator = '+';
             displayValue.textContent = operator;
@@ -57,7 +57,7 @@ function display() {
             string = initialNum;
             break
     }
-    console.log('num1: ' + num1);
+    console.log(`num1 is: ${num1}`);
     console.log('string is: '+string);
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
@@ -68,18 +68,6 @@ function display() {
 
 
 }
-
-//functions can't return global variables 
-
-//user presses an operator, stop storing value, store operator 
-//user presses another number, store value as num2 
-//user presses =, display solution, store solution as num1 
-
-//store number before operator as num1 
-const plusButton = document.querySelector('#plus');
-plusButton.onclick = () => {
-    num1 = 3;
-};
 
 // //Display number pressed and solution 
 // function display() {
