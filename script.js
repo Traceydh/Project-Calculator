@@ -5,8 +5,8 @@ allButtons.forEach(button => button.setAttribute('value', `${button.textContent}
 
 let initialNum = 0;
 let initialNumMultiplication = 1;
-let num1 = '0';
-let num2 = '0';
+let num1 = 0;
+let num2 = 0;
 let string = 0;
 let operator = '';
 let solution = '';
@@ -18,13 +18,14 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
-        //Do not allow user type more digits than the screen can display
+    //Do not allow user type more digits than the screen can display
     if (string.length == 10) {
         return
     }
 //user presses a number, store value as num1
     //Update 0 to input number and store multiple numbers together 
     string += this.value;
+    console.log('string: ' + string);
     displayValue.textContent = Number(string);
     //How does computer know when to stop storing value as num1? 
         //When user presses an operator store num1 as is, and display operator only
@@ -59,14 +60,12 @@ function display() {
             break
         case '−':
             //error: since num2 is stored as solution, numbers are not subtracting in the correct order
-            num2 = Number(string.slice(0,-1));
+            string = '';
+            num1 = Number(string.slice(0,-1));
             operator = '−';
+            
             console.log(num1, operator, num2);
-            solution = operate(num1, operator, num2);
-            num1 = solution;
-            string = initialNum;
-            displayValue.textContent = solution;
-            console.log('solution: '+ solution);
+            
             break
         case '÷':
             //ERROR divides by 0 
@@ -99,6 +98,12 @@ function display() {
         num2 = 0;
         solution = 0;
         displayValue.textContent = `${string}`;
+    }
+
+    //Delete one digit if delete is pressed 
+    if (this.value == 'Delete') {
+        string = string.slice(0,-7);
+        displayValue.textContent = Number(string);
     }
 }
 //ERRORS: when you press the operator, besides +, it produces incorrect answer because it computes it with num1=0 in the beginning 

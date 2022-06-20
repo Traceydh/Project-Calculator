@@ -49,10 +49,14 @@ footer {
 /*buttons*/
 .clear {
     margin: 20px 7.5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 25px;
 }
 .clear button {
-    width: 120px;
-    background-color: rgb(238, 151, 151);
+    width: 100%;
+    background-color: lightpink;
 }
 
 button {
