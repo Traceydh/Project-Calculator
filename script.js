@@ -36,40 +36,56 @@ function display() {
             num2 = solution;
             string = initialNum;
             displayValue.textContent = solution;
-            console.log('solution: '+ solution);
             break
         case '×':
             num1 = Number(string.slice(0,-1));
             operator = '×';
-            displayValue.textContent = operator;
+            solution = operate(num1, operator, num2);
+            num2 = solution;
             string = initialNum;
+            displayValue.textContent = solution;
             break
         case '−':
             num1 = Number(string.slice(0,-1));
             operator = '−';
-            displayValue.textContent = operator;
+            solution = operate(num1, operator, num2);
+            num2 = solution;
             string = initialNum;
+            displayValue.textContent = solution;
             break
         case '÷':
             num1 = Number(string.slice(0,-1));
             operator = '÷';
-            displayValue.textContent = operator;
+            solution = operate(num1, operator, num2);
+            num2 = solution;
             string = initialNum;
+            displayValue.textContent = solution;
             break
     }
-    
+
+
+    // num1 = Number(string.slice(0,-1));
+    // operator = '÷';
+    // displayValue.textContent = operator;
+    // string = initialNum;
     //User enters next number, store this as num2 
     //When user presses =, perform the operate function, display solution, reset string
     if (this.value == '=') {
+        num1 = solution; 
         num2 = Number(string.slice(0,-1));
         solution = operate(num1,operator,num2);
         displayValue.textContent = solution;
         string = solution;
+        //reset num2 back to 0, otherwise it will add num2 to num1 when operator is pressed
+        num2 = 0;
     }
 
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
         string = 0;
+        num1 = 0;
+        num2 = 0;
+        solution = 0;
         displayValue.textContent = `${string}`;
     }
 }
