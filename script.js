@@ -4,7 +4,8 @@ const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
 let initialNum = 0;
-let num1 = 0;
+let num1 = '';
+let string = 0;
 let operator = '';
 //Get display value 
 const displayValue = document.querySelector('#display-value');
@@ -14,44 +15,56 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
+//variables to think abou t
+// 1. the STRING that is being type
+// values that I want to store, num1, num2, operator 
+
     //user presses a number, store value as num1
-    num1 += this.value;
-    displayValue.textContent = Number(num1);
-    console.log('num1: ' + num1);
+    //Update 0 to input number and store multiple numbers together 
+    string += this.value;
+    displayValue.textContent = Number(string);
     //Do not allow user type more digits than the screen can display
-    if (num1.length == 10) {
+    if (string.length == 10) {
         return
     }
-    //Update 0 to input number and store multiple numbers together 
-
-
     //How does computer know when to stop storing value as num1? 
-    //When user presses an operator store num1 as is, and display operator only 
+        //When user presses an operator store num1 as is, and display operator only
+        //need to reset string of displayValue  
     switch (this.value) {
         case '+':
+            //when this case happens num1 is stored 
+            //AS SOON as you press somethign else, num1 is no longer stored 
+            num1 = Number(string.slice(0,-1));
             operator = '+';
             displayValue.textContent = operator;
+            string = initialNum;
             break
         case '×':
+            num1 = Number(string.slice(0,-1));
             operator = '×';
             displayValue.textContent = operator;
+            string = initialNum;
             break
         case '−':
+            num1 = Number(string.slice(0,-1));
             operator = '−';
             displayValue.textContent = operator;
+            string = initialNum;
             break
         case '÷':
+            num1 = Number(string.slice(0,-1));
             operator = '÷';
             displayValue.textContent = operator;
+            string = initialNum;
             break
     }
-
+    console.log('num1: ' + num1);
+    console.log('string is: '+string);
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
-        num1 = 0;
-        displayValue.textContent = `${num1}`;
+        string = 0;
+        displayValue.textContent = `${string}`;
     }
-    console.log(operator);
 
 
 
