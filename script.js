@@ -30,10 +30,17 @@ function display() {
         //need to reset string of displayValue  
     switch (this.value) {
         case '+':
+            console.log('string: ' + string);
+            //stored number entered as num1
             num1 = Number(string.slice(0,-1));
+            //store operator clicked
             operator = '+';
+            //add num1 and num2 together 
+            console.log(num1, operator, num2);
             solution = operate(num1, operator, num2);
+            //make num2 = solution 
             num2 = solution;
+            //reset string 
             string = initialNum;
             displayValue.textContent = solution;
             console.log('solution: '+ solution);
@@ -48,8 +55,10 @@ function display() {
             console.log('solution: '+ solution);
             break
         case '−':
+            //error: since num2 is stored as solution, numbers are not subtracting in the correct order
             num1 = Number(string.slice(0,-1));
             operator = '−';
+            console.log(num1, operator, num2);
             solution = operate(num1, operator, num2);
             num2 = solution;
             string = initialNum;
