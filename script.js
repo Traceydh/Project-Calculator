@@ -12,12 +12,15 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
-    let num1 = ' '; 
-    num1 = num1 + this.value;
+    //user presses a number, store value as num1
+    let num1 = initialNum + Number(this.value);
     console.log(num1);
+    console.log((this.value));
+    //How does computer know to update 0 to number? 
+    //How does computer know to store multiple numbers together? 
+    //How does computer know when to stop storing value as num1? 
 
-    //console.log(this.value);
-    displayValue.textContent += this.value;
+
 
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
@@ -27,10 +30,7 @@ function display() {
 }
 
 //functions can't return global variables 
-//user presses a number, store value as num1
-    //How does computer know to update 0 to number? 
-    //How does computer know to store multiple numbers together? 
-    //How does computer know when to stop storing value as num1? 
+
 //user presses an operator, stop storing value, store operator 
 //user presses another number, store value as num2 
 //user presses =, display solution, store solution as num1 
