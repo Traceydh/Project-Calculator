@@ -8,6 +8,7 @@ let num1 = '';
 let num2 = '';
 let string = 0;
 let operator = '';
+let solution = '';
 //Get display value 
 const displayValue = document.querySelector('#display-value');
 displayValue.textContent = `${initialNum}`;
@@ -56,21 +57,25 @@ function display() {
     }
 
     //User enters next number, store this as num2 
-    num2 = Number(string);
+    
+    console.log('  ');
     console.log('num2: ' + num2);
-    //When user presses =, perform the operator function 
-
-
+    console.log('operator: ' + operator);
     console.log(`num1 is: ${num1}`);
     console.log('string is: '+string);
+    //When user presses =, perform the operator function 
+    if (this.value == '=') {
+        num2 = Number(string.slice(0,-1));
+        solution = operate(num1,operator,num2);
+        displayValue.textContent = solution;
+        string = solution;
+    }
+    
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
         string = 0;
         displayValue.textContent = `${string}`;
     }
-
-
-
 }
 
 //ADD function 
