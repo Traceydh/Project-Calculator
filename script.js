@@ -3,23 +3,23 @@ const allButtons = document.querySelectorAll('button');
 //loop through each button and set it's value as the same as it's content
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
-let initialNum = 0;
+let num1 = 0;
 //Get display value 
 const displayValue = document.querySelector('#display-value');
-displayValue.textContent = `${initialNum}`
+displayValue.textContent = `${num1}`
 //Add an eventListener for each button 
 allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
     //user presses a number, store value as num1
-    let num1 = initialNum + Number(this.value);
-    console.log(num1);
-    console.log((this.value));
     //How does computer know to update 0 to number? 
+    num1 += this.value;
+    console.log('string is: ' + Number(num1));
+    displayValue.textContent = Number(num1);
     //How does computer know to store multiple numbers together? 
+    
     //How does computer know when to stop storing value as num1? 
-
 
 
     //if AC is pressed, reset num to 0 
