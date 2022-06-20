@@ -36,6 +36,7 @@ function display() {
             num2 = solution;
             string = initialNum;
             displayValue.textContent = solution;
+            console.log('solution: '+ solution);
             break
         case '×':
             num1 = Number(string.slice(0,-1));
@@ -44,6 +45,7 @@ function display() {
             num2 = solution;
             string = initialNum;
             displayValue.textContent = solution;
+            console.log('solution: '+ solution);
             break
         case '−':
             num1 = Number(string.slice(0,-1));
@@ -52,6 +54,7 @@ function display() {
             num2 = solution;
             string = initialNum;
             displayValue.textContent = solution;
+            console.log('solution: '+ solution);
             break
         case '÷':
             num1 = Number(string.slice(0,-1));
@@ -60,14 +63,10 @@ function display() {
             num2 = solution;
             string = initialNum;
             displayValue.textContent = solution;
+            console.log('solution: '+ solution);
             break
     }
 
-
-    // num1 = Number(string.slice(0,-1));
-    // operator = '÷';
-    // displayValue.textContent = operator;
-    // string = initialNum;
     //User enters next number, store this as num2 
     //When user presses =, perform the operate function, display solution, reset string
     if (this.value == '=') {
@@ -76,7 +75,7 @@ function display() {
         solution = operate(num1,operator,num2);
         displayValue.textContent = solution;
         string = solution;
-        //reset num2 back to 0, otherwise it will add num2 to num1 when operator is pressed
+        //reset num2 back to 0, otherwise it will add num2 to num1 when operator is
         num2 = 0;
     }
 
