@@ -4,8 +4,9 @@ const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
 let initialNum = 0;
-let num1 = 0;
-let num2 = 0;
+let initialNumMultiplication = 1;
+let num1 = '0';
+let num2 = '0';
 let string = 0;
 let operator = '';
 let solution = '';
@@ -17,14 +18,14 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
+        //Do not allow user type more digits than the screen can display
+    if (string.length == 10) {
+        return
+    }
 //user presses a number, store value as num1
     //Update 0 to input number and store multiple numbers together 
     string += this.value;
     displayValue.textContent = Number(string);
-    //Do not allow user type more digits than the screen can display
-    if (string.length == 10) {
-        return
-    }
     //How does computer know when to stop storing value as num1? 
         //When user presses an operator store num1 as is, and display operator only
         //need to reset string of displayValue  
@@ -33,14 +34,14 @@ function display() {
         case '+':
             console.log('string: ' + string);
             //stored number entered as num1
-            num1 = Number(string.slice(0,-1));
+            num2 = Number(string.slice(0,-1));
             //store operator clicked
             operator = '+';
             //add num1 and num2 together 
             console.log(num1, operator, num2);
             solution = operate(num1, operator, num2);
             //make num2 = solution 
-            num2 = solution;
+            num1 = solution;
             //reset string 
             string = initialNum;
             displayValue.textContent = solution;
@@ -58,11 +59,11 @@ function display() {
             break
         case '−':
             //error: since num2 is stored as solution, numbers are not subtracting in the correct order
-            num1 = Number(string.slice(0,-1));
+            num2 = Number(string.slice(0,-1));
             operator = '−';
             console.log(num1, operator, num2);
             solution = operate(num1, operator, num2);
-            num2 = solution;
+            num1 = solution;
             string = initialNum;
             displayValue.textContent = solution;
             console.log('solution: '+ solution);
@@ -82,13 +83,13 @@ function display() {
     //User enters next number, store this as num2 
     //When user presses =, perform the operate function, display solution, reset string
     if (this.value == '=') {
-        num1 = solution; 
-        num2 = Number(string.slice(0,-1));
+        num2 = solution; 
+        num1 = Number(string.slice(0,-1));
         solution = operate(num1,operator,num2);
         displayValue.textContent = solution;
         string = solution;
         //reset num2 back to 0, otherwise it will add num2 to num1 when operator is
-        num2 = 0;
+        num1 = 0;
     }
 
     //if AC is pressed, reset num to 0 
@@ -100,6 +101,12 @@ function display() {
         displayValue.textContent = `${string}`;
     }
 }
+//ERRORS: when you press the operator, besides +, it produces incorrect answer because it computes it with num1=0 in the beginning 
+//User types num1, store 
+//user types operator, store 
+//user types num2, store 
+//user types = or operator, compute solution and display 
+
 
 //ADD function 
 const add = function(num1, num2) {
