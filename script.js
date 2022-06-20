@@ -3,33 +3,58 @@ const allButtons = document.querySelectorAll('button');
 //loop through each button and set it's value as the same as it's content
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
+let initialNum = 0;
 let num1 = 0;
+let operator = '';
 //Get display value 
 const displayValue = document.querySelector('#display-value');
-displayValue.textContent = `${num1}`
+displayValue.textContent = `${initialNum}`;
 //Add an eventListener for each button 
 allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
     //user presses a number, store value as num1
-    //Do not allow user to go over 9 digits 
+    num1 += this.value;
+    displayValue.textContent = Number(num1);
+    console.log('num1: ' + num1);
+    //Do not allow user type more digits than the screen can display
     if (num1.length == 10) {
         return
     }
     //Update 0 to input number and store multiple numbers together 
-    num1 += this.value;
-    displayValue.textContent = Number(num1);
+
 
     //How does computer know when to stop storing value as num1? 
-
-
+    //When user presses an operator store num1 as is, and display operator only 
+    switch (this.value) {
+        case '+':
+            operator = '+';
+            displayValue.textContent = operator;
+            break
+        case '×':
+            operator = '×';
+            displayValue.textContent = operator;
+            break
+        case '−':
+            operator = '−';
+            displayValue.textContent = operator;
+            break
+        case '÷':
+            operator = '÷';
+            displayValue.textContent = operator;
+            break
+    }
 
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
-        initialNum = 0;
-        displayValue.textContent = `${initialNum}`;
+        num1 = 0;
+        displayValue.textContent = `${num1}`;
     }
+    console.log(operator);
+
+
+
 }
 
 //functions can't return global variables 
