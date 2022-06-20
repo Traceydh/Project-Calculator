@@ -5,6 +5,7 @@ allButtons.forEach(button => button.setAttribute('value', `${button.textContent}
 
 let initialNum = 0;
 let num1 = '';
+let num2 = '';
 let string = 0;
 let operator = '';
 //Get display value 
@@ -15,11 +16,7 @@ allButtons.forEach(button => button.addEventListener('click', display));
 //store num1 as global variable
 
 function display() {
-//variables to think about
-// 1. the STRING that is being type
-// values that I want to store, num1, num2, operator 
-
-    //user presses a number, store value as num1
+//user presses a number, store value as num1
     //Update 0 to input number and store multiple numbers together 
     string += this.value;
     displayValue.textContent = Number(string);
@@ -57,6 +54,13 @@ function display() {
             string = initialNum;
             break
     }
+
+    //User enters next number, store this as num2 
+    num2 = Number(string);
+    console.log('num2: ' + num2);
+    //When user presses =, perform the operator function 
+
+
     console.log(`num1 is: ${num1}`);
     console.log('string is: '+string);
     //if AC is pressed, reset num to 0 
@@ -68,48 +72,6 @@ function display() {
 
 
 }
-
-// //Display number pressed and solution 
-// function display() {
-//     //User enters number, display number on screen 
-//     displayValue.textContent += this.value;
-//     let string = displayValue.textContent;
-
-//     //if user presses AC, clear value
-//     const clearButton = document.querySelector('#clear');
-//     clearButton.onclick = () => {displayValue.textContent = ''};
-
-//     const equalButton = document.querySelector('#equal');
-//     equalButton.onclick = () => {
-//         //Identify which operator is selected 
-
-
-//         //ISSUE only identifies first operator, ignores the rest 
-//         let operator;
-//         if (string.includes('+')) {
-//             operator = '+';
-//         } else if (string.includes('×')) {
-//             operator = '×';
-//         } else if (string.includes('−')) {
-//             operator = '−';
-//         } else if (string.includes('÷')) {
-//             operator = '÷';
-//         }
-
-//         //split string 
-//         //ISSUE can't handle more numbers
-//         let numArray = string.split(operator);
-//         //store num1 and 2 
-//         let num2 = numArray[1].slice(0,-1);
-//         console.log('num2: ' + num2);
-//         let num1 = numArray[0];
-//         console.log('num1: ' + num1);
-//         //calculate solution 
-//         let solution = operate(num1,operator,num2);
-//         displayValue.textContent = solution;
-//     }
-//     console.log('string is: '+ string)
-// }
 
 //ADD function 
 const add = function(num1, num2) {
