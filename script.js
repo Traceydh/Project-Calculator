@@ -4,8 +4,8 @@ const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
 let initialNum = 0;
-let num1 = '';
-let num2 = '';
+let num1 = 0;
+let num2 = 0;
 let string = 0;
 let operator = '';
 let solution = '';
@@ -30,11 +30,13 @@ function display() {
         //need to reset string of displayValue  
     switch (this.value) {
         case '+':
-            //why does num1 store 3 after a number is entered after pressing operator?
             num1 = Number(string.slice(0,-1));
             operator = '+';
-            displayValue.textContent = operator;
+            solution = operate(num1, operator, num2);
+            num2 = solution;
             string = initialNum;
+            displayValue.textContent = solution;
+            console.log('solution: '+ solution);
             break
         case '×':
             num1 = Number(string.slice(0,-1));
@@ -55,22 +57,16 @@ function display() {
             string = initialNum;
             break
     }
-
-    //User enters next number, store this as num2 
     
-    console.log('  ');
-    console.log('num2: ' + num2);
-    console.log('operator: ' + operator);
-    console.log(`num1 is: ${num1}`);
-    console.log('string is: '+string);
-    //When user presses =, perform the operator function 
+    //User enters next number, store this as num2 
+    //When user presses =, perform the operate function, display solution, reset string
     if (this.value == '=') {
         num2 = Number(string.slice(0,-1));
         solution = operate(num1,operator,num2);
         displayValue.textContent = solution;
         string = solution;
     }
-    
+
     //if AC is pressed, reset num to 0 
     if (this.value == 'AC') {
         string = 0;
