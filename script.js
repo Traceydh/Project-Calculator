@@ -28,6 +28,7 @@ function display() {
     //How does computer know when to stop storing value as num1? 
         //When user presses an operator store num1 as is, and display operator only
         //need to reset string of displayValue  
+        //num2 is 
     switch (this.value) {
         case '+':
             console.log('string: ' + string);
@@ -45,6 +46,7 @@ function display() {
             displayValue.textContent = solution;
             console.log('solution: '+ solution);
             break
+            //ERROR returns 0 
         case '×':
             num1 = Number(string.slice(0,-1));
             operator = '×';
@@ -66,6 +68,7 @@ function display() {
             console.log('solution: '+ solution);
             break
         case '÷':
+            //ERROR divides by 0 
             num1 = Number(string.slice(0,-1));
             operator = '÷';
             solution = operate(num1, operator, num2);
