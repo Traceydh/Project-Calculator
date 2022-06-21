@@ -90,16 +90,20 @@ clearButton.onclick = () => {
     previousDisplay.textContent = '';
 }
 
-//Delete one digit from current display 
+//Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
-    //if not more digits to delete, stop at 0
-    if (currentNum.slice(0,-1) == '') {
+    if (currentNum == '') {
+        console.log(solution);
+        solution = solution.toString();
+        console.log(solution);
+        solution = solution.slice(0,-1);
+        console.log(solution);
+        currentDisplay.textContent = solution;
+        console.log(solution);
+    } else {
         currentNum = currentNum.slice(0,-1);
-        currentDisplay.textContent = '0';
-        return
+        currentDisplay.textContent = currentNum;
     }
-    currentNum = currentNum.slice(0,-1);
-    currentDisplay.textContent = currentNum;
 }
 
 // const allButtons = document.querySelectorAll('button');
