@@ -28,7 +28,7 @@ numberButton.forEach(button => button.addEventListener('click', (e) => {
 } ));
 //listen for if user presses a key on keyboard 
 window.addEventListener('keydown', (e) => {
-    console.log(e.keycode);
+    console.log(e.keyCode);
 } );
 
 function numberFunction(number) {
