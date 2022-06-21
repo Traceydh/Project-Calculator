@@ -4,8 +4,7 @@ const allButtons = document.querySelectorAll('button');
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
 let initialNum = 0;
-let initialNumMultiplication = 1;
-let num1 = 0;
+let num1;
 let num2 = 0;
 let string = 0;
 let operator = '';
@@ -59,12 +58,13 @@ function display() {
             console.log('solution: '+ solution);
             break
         case '−':
-            //error: since num2 is stored as solution, numbers are not subtracting in the correct order
-            string = '';
-            num1 = Number(string.slice(0,-1));
-            operator = '−';
-            
-            console.log(num1, operator, num2);
+            //User enters number, how do I store this as num1? How do i know when the number as ended? When the human presses the operator 
+
+            //User enters operator, store and execute operate command
+                //check if there is num1 and num2 that can be applied
+            //user enters num2, store 
+            //user enters operator again
+                //check variables and execute 
             
             break
         case '÷':
