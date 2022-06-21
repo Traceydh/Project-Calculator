@@ -93,13 +93,9 @@ clearButton.onclick = () => {
 //Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
     if (currentNum == '') {
-        console.log(solution);
         solution = solution.toString();
-        console.log(solution);
         solution = solution.slice(0,-1);
-        console.log(solution);
         currentDisplay.textContent = solution;
-        console.log(solution);
     } else {
         currentNum = currentNum.slice(0,-1);
         currentDisplay.textContent = currentNum;
