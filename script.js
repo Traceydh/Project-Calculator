@@ -26,13 +26,22 @@ const previousDisplay = document.querySelector('#previousDisplay');
 numberButton.forEach(button => button.addEventListener('click', (e) => {
     numberFunction(e.target.textContent);
 } ));
+//listen for if user presses a key on keyboard 
+window.addEventListener('keydown', (e) => {
+    console.log(e.keycode);
+} );
 
 function numberFunction(number) {
     if (currentNum.length >= 14) {
         return
     }
+    //only allow user to input one number after a decimal place 
+    if (number == '.') {
+        console.log('clic');
+    }
     currentNum += number;
     currentDisplay.textContent = currentNum;
+
 }
 
 //operator buttons, store display number as previous number 
@@ -103,9 +112,6 @@ deleteButton.onclick = () => {
     }
 }
 
-// const allButtons = document.querySelectorAll('button');
-// allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
-// allButtons.forEach(button => button.addEventListener('click', display));
 
 //ADD function 
 const add = function(num1, num2) {
