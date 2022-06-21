@@ -28,6 +28,9 @@ numberButton.forEach(button => button.addEventListener('click', (e) => {
 } ));
 
 function numberFunction(number) {
+    if (currentNum.length >= 14) {
+        return
+    }
     currentNum += number;
     currentDisplay.textContent = currentNum;
 }
