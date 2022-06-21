@@ -10,7 +10,8 @@ This calculator
 - doesn't let user add more than one number after the decimal point 
 - doesn't let user add more than one decimal point 
 - has a delete function which deletes one digit from current value 
-- displays snarky message when user divides by 0 
+
 
 To do in future:
 - add keyboard support 
+- displays snarky message when user divides by 0 
