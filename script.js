@@ -24,7 +24,7 @@ numberButton.forEach(button => button.addEventListener('click', (e) => {
 } ));
 
 function numberFunction(number) {
-    num1 = number;
+    num1 += number;
     currentDisplay.textContent = num1;
 }
 
