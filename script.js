@@ -20,10 +20,13 @@ const previousDisplay = document.querySelector('#previousDisplay');
 
 //Apply display number function for numbers 
 numberButton.forEach(button => button.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
+    numberFunction(e.target.textContent);
 } ));
 
-
+function numberFunction(number) {
+    num1 = number;
+    currentDisplay.textContent = num1;
+}
 
 
 // const allButtons = document.querySelectorAll('button');
