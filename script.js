@@ -75,7 +75,8 @@ function makeSolution() {
     solution = operate(previousNum, operator, currentNum);
     previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
     //display up to 4 decimal places if required 
-    currentDisplay.textContent = Number(solution.toFixed(4));
+    solution = Number(solution.toFixed(4));
+    currentDisplay.textContent = solution;
     previousNum = solution;
     currentNum  = '';
 }
