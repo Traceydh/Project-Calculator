@@ -5,7 +5,7 @@ allButtons.forEach(button => button.setAttribute('value', `${button.textContent}
 
 let initialNum = 0;
 let num1;
-let num2 = 0;
+let num2;
 let string = 0;
 let operator = '';
 let solution = '';
@@ -58,10 +58,20 @@ function display() {
             console.log('solution: '+ solution);
             break
         case '−':
-            //User enters number, how do I store this as num1? How do i know when the number as ended? When the human presses the operator 
-
-            //User enters operator, store and execute operate command
+            //User enters number, How do i know when the number as ended? When the human presses the operator 
+            num1 = Number(string.slice(0,-1));
+            console.log(num1, num2);
+            string = initialNum;
+            //User enters operator, store
+            operator = '−';
                 //check if there is num1 and num2 that can be applied
+            if (num2 == undefined || num1 == undefined) {
+                console.log('num2 not defined');
+            } else {
+                console.log('num1 and nunm2 exist');
+            }
+            
+            
             //user enters num2, store 
             //user enters operator again
                 //check variables and execute 
