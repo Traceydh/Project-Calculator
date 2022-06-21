@@ -28,6 +28,18 @@ function numberFunction(number) {
     currentDisplay.textContent = num1;
 }
 
+//operator buttons. What do i want it to do?
+operatorButton.forEach(button => button.addEventListener('click', (e) => {
+    console.log(e.target.textContent);
+} ));
+
+function operatorFunction(op) {
+    //store operator 
+    //store current number as previous number 
+}
+
+
+
 
 // const allButtons = document.querySelectorAll('button');
 // allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
