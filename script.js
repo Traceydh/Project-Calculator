@@ -1,7 +1,8 @@
 //Set variables 
 let num1 = '';
-let num2 = ''
+let num2 = '';
 let operator = '';
+let solution = '';
 
 //Get all buttons from HTML file 
 //number buttons 
@@ -30,14 +31,25 @@ function numberFunction(number) {
 
 //operator buttons. What do i want it to do?
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    console.log(e.target.textContent);
+    operatorFunction(e.target.textContent);
 } ));
 
 function operatorFunction(op) {
     //store operator 
+    operator = op;
     //store current number as previous number 
+    num2 = num1;
+    previousDisplay.textContent = num2 + ' ' + operator;
+    num1 = '';
+    currentDisplay.textContent = '';
 }
 
+equalButton.onclick = () => {
+    console.log(num2, operator, num1);
+    solution = operate(num2, operator, num1);
+    previousDisplay.textContent = num2 + ' ' + operator + ' ' + num1;
+    currentDisplay.textContent = solution;
+}
 
 
 
