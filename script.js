@@ -17,10 +17,10 @@ const deleteButton = document.querySelector('#delete');
 const clearButton = document.querySelector('#clear');
 //display area 
 const currentDisplay = document.querySelector('#currentDisplay');
+//Display 0 initially 
+currentDisplay.textContent = '0';
 const previousDisplay = document.querySelector('#previousDisplay');
 
-//VARIABLES 
-// 
 
 //Apply display number function for numbers 
 numberButton.forEach(button => button.addEventListener('click', (e) => {
@@ -62,7 +62,20 @@ equalButton.onclick = () => {
 }
 
 clearButton.onclick = () => {
-    
+    currentNum = '';
+    previousNum = '';
+    operator = '';
+    solution = '';
+    currentDisplay.textContent = '0';
+    previousDisplay.textContent = '';
+}
+
+deleteButton.onclick = () => {
+    if (currentNum.slice(0,-1) == '') {
+        return
+    }
+    currentNum = currentNum.slice(0,-1);
+    currentDisplay.textContent = currentNum;
 }
 
 // const allButtons = document.querySelectorAll('button');
