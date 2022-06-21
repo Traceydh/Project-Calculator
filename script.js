@@ -1,3 +1,8 @@
+//Set variables 
+let num1 = '';
+let num2 = ''
+let operator = '';
+
 //Get all buttons from HTML file 
 //number buttons 
 const numberButton = document.querySelectorAll('[data-number]');
