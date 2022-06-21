@@ -1,19 +1,41 @@
-//get all buttons 
+//Get all buttons from HTML file 
+//number buttons 
+const numberButton = document.querySelectorAll('[data-number]');
+//operator button
+const operatorButton = document.querySelectorAll('[data-operator]');
+//equal button
+const equalButton = document.querySelector('#equal');
+//delete button
+const deleteButton = document.querySelector('#delete');
+//all clear button 
+const clearButton = document.querySelector('#clear');
+//display area 
+const displayValue = document.querySelector('#display-value');
+displayValue.textContent = `${initialNum}`;
+
+
+
 const allButtons = document.querySelectorAll('button');
 //loop through each button and set it's value as the same as it's content
 allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
 
+//Add an eventListener for number buttons 
+
+
+allButtons.forEach(button => button.addEventListener('click', display));
+
+
 let initialNum = 0;
 let num1;
 let num2;
-let string = 0;
+let num;
+let string = '0';
 let operator = '';
 let solution = '';
-//Get display value 
-const displayValue = document.querySelector('#display-value');
-displayValue.textContent = `${initialNum}`;
-//Add an eventListener for each button 
-allButtons.forEach(button => button.addEventListener('click', display));
+let test = '';
+test = string;
+
+//Add eventListener for opeartor buttons 
 //store num1 as global variable
 
 function display() {
@@ -60,19 +82,25 @@ function display() {
         case '−':
             //User enters number, How do i know when the number as ended? When the human presses the operator 
             num1 = Number(string.slice(0,-1));
-            console.log(num1, num2);
-            string = initialNum;
             //User enters operator, store
             operator = '−';
+            string = '';
+            displayValue.textContent = (num1);
                 //check if there is num1 and num2 that can be applied
             if (num2 == undefined || num1 == undefined) {
-                console.log('num2 not defined');
+                console.log('not defined');
             } else {
-                console.log('num1 and nunm2 exist');
+                num2 = string.replace('5', '');
+                console.log('num1 and num2 exist');
             }
             
             
-            //user enters num2, store 
+            
+            console.log(num1, operator, num2);
+            
+            //user enters num2, How do i know when this number has ended? 
+            
+
             //user enters operator again
                 //check variables and execute 
             
