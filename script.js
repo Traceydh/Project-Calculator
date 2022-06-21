@@ -1,6 +1,6 @@
 //Set variables 
-let num1 = '';
-let num2 = '';
+let currentNum = '';
+let previousNum = '';
 let operator = '';
 let solution = '';
 
@@ -19,14 +19,17 @@ const clearButton = document.querySelector('#clear');
 const currentDisplay = document.querySelector('#currentDisplay');
 const previousDisplay = document.querySelector('#previousDisplay');
 
+//VARIABLES 
+// 
+
 //Apply display number function for numbers 
 numberButton.forEach(button => button.addEventListener('click', (e) => {
     numberFunction(e.target.textContent);
 } ));
 
 function numberFunction(number) {
-    num1 += number;
-    currentDisplay.textContent = num1;
+    currentNum += number;
+    currentDisplay.textContent = currentNum;
 }
 
 //operator buttons. What do i want it to do?
@@ -37,21 +40,30 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
 function operatorFunction(op) {
     //store operator 
     operator = op;
-    //store current number as previous number 
-    num2 = num1;
-    previousDisplay.textContent = num2 + ' ' + operator;
-    num1 = '';
+    //store current number as previous number, if it is the first thing entered on calculator 
+    //if = button has been used before, use the solution number as previous num
+    if (solution == '') {
+        previousNum = currentNum;
+    } else {
+        previousNum = solution;
+    }
+    previousDisplay.textContent = previousNum + ' ' + operator;
+    currentNum = '';
     currentDisplay.textContent = '';
 }
 
 equalButton.onclick = () => {
-    console.log(num2, operator, num1);
-    solution = operate(num2, operator, num1);
-    previousDisplay.textContent = num2 + ' ' + operator + ' ' + num1;
+    console.log(previousNum, operator, currentNum);
+    solution = operate(previousNum, operator, currentNum);
+    previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
     currentDisplay.textContent = solution;
+    previousNum = solution;
+    currentNum  = '';
 }
 
-
+clearButton.onclick = () => {
+    
+}
 
 // const allButtons = document.querySelectorAll('button');
 // allButtons.forEach(button => button.setAttribute('value', `${button.textContent}`));
