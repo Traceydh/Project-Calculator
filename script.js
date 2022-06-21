@@ -10,8 +10,8 @@ const deleteButton = document.querySelector('#delete');
 //all clear button 
 const clearButton = document.querySelector('#clear');
 //display area 
-const displayValue = document.querySelector('#display-value');
-displayValue.textContent = `${initialNum}`;
+const currentDisplay = document.querySelector('#currentDisplay');
+const previousDisplay = document.querySelector('#previousDisplay');
 
 
 

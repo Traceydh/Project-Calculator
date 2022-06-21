@@ -36,15 +36,26 @@ footer {
     margin-top: 25px;
     border-radius: 15px;
     border: solid black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .display div {
-    font-size: 70px;
-    display: flex;
-    justify-content: right;
-    align-items: center;
     margin-right: 10px;
 }
+
+#currentDisplay {
+    font-size: 45px;
+}
+
+#previousDisplay {
+    font-size: 20px;
+    opacity: 0.8;
+}
+
 
 /*buttons*/
 .clear {
