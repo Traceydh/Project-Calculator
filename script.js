@@ -29,10 +29,17 @@ numberButton.forEach(button => button.addEventListener('click', (e) => {
 function numberFunction(number) {
     if (currentNum.length >= 14) {
         return
-    }
-    if (number === '.' && currentNum.includes('.')) {
+        //only allow user to enter one period 
+    } else if (number === '.' && currentNum.includes('.')) {
         return
+        //only allow user to enter one number after decimal point 
+    } else if (currentNum.includes('.') && currentNum.split('.')[1].length > 0) {
+        console.log(currentNum.split('.'));
+        console.log(currentNum.split('.')[1]);
+        console.log(currentNum.split('.')[1].length);
+        return;
     }
+
     currentNum += number;
     currentDisplay.textContent = currentNum;   
 }
