@@ -115,3 +115,19 @@ button:active {
     background-color: aqua;
     padding: 20;
 }
+
+
+/* style footer */
+.border {
+    border-right: groove 1px black;
+    padding-right: 5px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightpink;
+}
