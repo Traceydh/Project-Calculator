@@ -73,7 +73,6 @@ equalButton.onclick = () => {
 //execute operate button, display solution
 function makeSolution() {
     solution = operate(previousNum, operator, currentNum);
-    console.log(solution);
     previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
     //display up to 4 decimal places if required 
     currentDisplay.textContent = Number(solution.toFixed(4));
@@ -95,6 +94,7 @@ clearButton.onclick = () => {
 deleteButton.onclick = () => {
     //if not more digits to delete, stop at 0
     if (currentNum.slice(0,-1) == '') {
+        currentNum = currentNum.slice(0,-1);
         currentDisplay.textContent = '0';
         return
     }
