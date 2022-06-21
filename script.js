@@ -21,15 +21,10 @@ const currentDisplay = document.querySelector('#currentDisplay');
 currentDisplay.textContent = '0';
 const previousDisplay = document.querySelector('#previousDisplay');
 
-
 //Display number user is typing
 numberButton.forEach(button => button.addEventListener('click', (e) => {
     numberFunction(e.target.textContent);
 } ));
-//listen for if user presses a key on keyboard 
-window.addEventListener('keydown', (e) => {
-    console.log(e.keyCode);
-} );
 
 function numberFunction(number) {
     if (currentNum.length >= 14) {
@@ -41,7 +36,6 @@ function numberFunction(number) {
     }
     currentNum += number;
     currentDisplay.textContent = currentNum;
-
 }
 
 //operator buttons, store display number as previous number 
@@ -111,6 +105,21 @@ deleteButton.onclick = () => {
         currentDisplay.textContent = currentNum;
     }
 }
+
+let keyPressed = {};
+//listen for if user presses a key on keyboard 
+window.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+    console.log(key.textContent);
+    //check if shift is being held down to get the + symbol 
+    if (e.shiftKey == true && e.keyCode == 187) {
+        console.log('+ clicked');
+    }
+    //check if shift is being held down to get the * symbol
+    if (e.shiftKey == true && e.keyCode == 56) {
+        console.log('* clicked');
+    }
+} );
 
 
 //ADD function 
