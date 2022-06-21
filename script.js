@@ -30,12 +30,11 @@ function numberFunction(number) {
     if (currentNum.length >= 14) {
         return
     }
-    //only allow user to input one number after a decimal place 
-    if (number == '.') {
-        console.log('clic');
+    if (number === '.' && currentNum.includes('.')) {
+        return
     }
     currentNum += number;
-    currentDisplay.textContent = currentNum;
+    currentDisplay.textContent = currentNum;   
 }
 
 //operator buttons, store display number as previous number 
@@ -106,20 +105,40 @@ deleteButton.onclick = () => {
     }
 }
 
-let keyPressed = {};
-//listen for if user presses a key on keyboard 
-window.addEventListener('keydown', (e) => {
-    const key = document.querySelector(`button[data-key="${e.keyCode}"]`);
-    console.log(key.textContent);
-    //check if shift is being held down to get the + symbol 
-    if (e.shiftKey == true && e.keyCode == 187) {
-        console.log('+ clicked');
-    }
-    //check if shift is being held down to get the * symbol
-    if (e.shiftKey == true && e.keyCode == 56) {
-        console.log('* clicked');
-    }
-} );
+// let key = '';
+// //listen for if user presses a key on keyboard 
+// window.addEventListener('keydown', (e) => {
+//     key = document.querySelector(`button[data-key="${e.keyCode}"]`);
+//     //display numbers if pressed 
+//     switch (key.textContent) {
+//         case '0':
+//         case '1':
+//         case '2':
+//         case '3':
+//         case '4':
+//         case '5':
+//         case '6':
+//         case '7':
+//         case '8':
+//         case '9':
+//             numberFunction(key.textContent);
+//             break
+//     }
+//     //do operator function is operator is pressed 
+//     if (e.keyCode == 189 && (previousNum == '' || currentNum == '')) {
+//         operatorFunction(key.textContent);
+//     } else {
+//         makeSolution();
+//     }
+//     //check if shift is being held down to get the + symbol 
+//     if (e.shiftKey == true && e.keyCode == 187) {
+//         console.log('+ clicked');
+//     }
+//     //check if shift is being held down to get the * symbol
+//     if (e.shiftKey == true && e.keyCode == 56) {
+//         console.log('* clicked');
+//     }
+// } );
 
 
 //ADD function 
