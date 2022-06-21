@@ -22,7 +22,7 @@ currentDisplay.textContent = '0';
 const previousDisplay = document.querySelector('#previousDisplay');
 
 
-//Apply display number function for numbers 
+//Display number user is typing
 numberButton.forEach(button => button.addEventListener('click', (e) => {
     numberFunction(e.target.textContent);
 } ));
@@ -35,7 +35,8 @@ function numberFunction(number) {
     currentDisplay.textContent = currentNum;
 }
 
-//operator buttons. What do i want it to do?
+//operator buttons, store display number as previous number 
+//Store operator 
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
     operatorFunction(e.target.textContent);
 } ));
@@ -55,15 +56,21 @@ function operatorFunction(op) {
     currentDisplay.textContent = '';
 }
 
+//perform operator on current and previous number 
 equalButton.onclick = () => {
+    //if no previous or current number don't respond 
+    if (currentNum == '' || previousNum == '') {
+        return
+    }
     console.log(previousNum, operator, currentNum);
     solution = operate(previousNum, operator, currentNum);
     previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
-    currentDisplay.textContent = solution;
+    currentDisplay.textContent = Number(solution.toFixed(4));
     previousNum = solution;
     currentNum  = '';
 }
 
+//clear everything
 clearButton.onclick = () => {
     currentNum = '';
     previousNum = '';
@@ -73,8 +80,11 @@ clearButton.onclick = () => {
     previousDisplay.textContent = '';
 }
 
+//Delete one digit from current display 
 deleteButton.onclick = () => {
+    //if not more digits to delete, stop at 0
     if (currentNum.slice(0,-1) == '') {
+        currentDisplay.textContent = '0';
         return
     }
     currentNum = currentNum.slice(0,-1);
