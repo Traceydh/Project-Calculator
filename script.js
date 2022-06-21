@@ -33,13 +33,10 @@ function numberFunction(number) {
     } else if (number === '.' && currentNum.includes('.')) {
         return
         //only allow user to enter one number after decimal point 
+        //split string, count length after decimal place
     } else if (currentNum.includes('.') && currentNum.split('.')[1].length > 0) {
-        console.log(currentNum.split('.'));
-        console.log(currentNum.split('.')[1]);
-        console.log(currentNum.split('.')[1].length);
         return;
     }
-
     currentNum += number;
     currentDisplay.textContent = currentNum;   
 }
