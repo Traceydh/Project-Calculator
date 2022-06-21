@@ -1,6 +1,6 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background-color: rgb(236, 200, 250);
+    background-image: linear-gradient(to right, lightpink, lightblue, rgb(201, 255, 210));
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ footer {
 .calculator-body {
     background-color: rgb(95, 128, 235);
     width: 450px;
-    height: 600px;
+    height: 620px;
     border-radius: 25px;
     margin-top: 15vh;
     display: flex;
@@ -33,7 +33,7 @@ footer {
     width: 85%;
     height: 100px;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 25px;
     border-radius: 15px;
     border: solid black;
 

@@ -73,6 +73,7 @@ equalButton.onclick = () => {
 //execute operate button, display solution
 function makeSolution() {
     solution = operate(previousNum, operator, currentNum);
+    console.log(solution);
     previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
     //display up to 4 decimal places if required 
     currentDisplay.textContent = Number(solution.toFixed(4));
@@ -125,8 +126,8 @@ const divide = function(num1, num2) {
 //OPERATE function 
 //takes an operator and 2 numbers and then calls one of the above functions on the numbers
 function operate(num1,operator,num2) {
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (operator) {
         case '×': 
         return multiply(num1, num2);
