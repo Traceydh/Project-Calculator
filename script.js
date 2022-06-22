@@ -42,13 +42,9 @@ function numberFunction(number) {
     currentDisplay.textContent = currentNum;   
 }
 
-
-//operator buttons, store display number as previous number 
-    // 1 + first equation, store current num as previousNum and operator 
-    // 1 + 2, - , stores solution as previousNum, new operator 
-//Store operator 
+//operator buttons,there are three scenarios which should do different things
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    //1 + , if there is no previousNum this is the first equation, store current num as previousNum and operator
+    //if 1 + , if there is no previousNum this is the first equation, store current num as previousNum and operator
     if (previousNum === '') {
         previousNum = currentNum;
         storeOperatorPreviousDisplay(e.target.textContent);
@@ -59,14 +55,12 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
         solution = Number(solution.toFixed(4));
         previousNum = solution;
         storeOperatorPreviousDisplay(e.target.textContent);
-    //1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
+    //if 1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
     } else if (previousDisplay.textContent.includes('=')) {
         solution = Number(solution.toFixed(4));
         previousNum = solution;
         storeOperatorPreviousDisplay(e.target.textContent);
     }
-
-
 } ));
 
 function storeOperatorPreviousDisplay(op) {
@@ -190,6 +184,3 @@ function operate(num1,operator,num2) {
         return divide(num1, num2);
     }
 }
-
-
-
