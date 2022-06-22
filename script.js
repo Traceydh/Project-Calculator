@@ -27,12 +27,13 @@ numberButton.forEach(button => button.addEventListener('click', (e) => {
 } ));
 
 function numberFunction(number) {
+    //only allow user to enter numbers up to display size 
     if (currentNum.length >= 14) {
         return
-        //only allow user to enter one period 
+    //only allow user to enter one period 
     } else if (number === '.' && currentNum.includes('.')) {
         return
-        //only allow user to enter one number after decimal point 
+    //only allow user to enter one number after decimal point 
         //split string, count length after decimal place
     } else if (currentNum.includes('.') && currentNum.split('.')[1].length > 0) {
         return;
@@ -41,12 +42,15 @@ function numberFunction(number) {
     currentDisplay.textContent = currentNum;   
 }
 
+
 //operator buttons, store display number as previous number 
 //Store operator 
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    //execute operator is user presses an operator again instead of = 
+    console.log(previousNum, operator, currentNum);
+    //if previous number hasn't been set. Which means this is the very first calculation. 
     if (previousNum == '' || currentNum == '') {
         operatorFunction(e.target.textContent);
+    //If equal signs is pressed 
     } else {
         makeSolution();
     }
@@ -55,17 +59,17 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
 function operatorFunction(op) {
     //store operator 
     operator = op;
-    console.log('sol: ' + solution + ' ' + 'prev: ' + previousNum);
-    //store current number as previous number, if it is the first thing entered on calculator 
+    //store current number as previous number
     //if = button has been used before, use the solution number as previous num
     if (solution === '') {
         previousNum = currentNum;
+        currentDisplay.textContent = previousNum;
     } else {
         previousNum = solution;
     }
     previousDisplay.textContent = previousNum + ' ' + operator;
     currentNum = '';
-    currentDisplay.textContent = '';
+
 }
 
 //perform operator on current and previous number 
