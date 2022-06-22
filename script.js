@@ -50,45 +50,29 @@ function numberFunction(number) {
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
     //1 + , if there is no previousNum this is the first equation, store current num as previousNum and operator
     if (previousNum === '') {
-        operator = e.target.textContent;
         previousNum = currentNum;
-        currentNum = '';
-        previousDisplay.textContent = previousNum + ' ' + operator;
+        storeOperatorPreviousDisplay(e.target.textContent);
     //If 1 + 2, work out solution and store as previous num, store new operator 
     } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
         //display solution 
         solution = operate(previousNum, operator, currentNum);
         solution = Number(solution.toFixed(4));
         previousNum = solution;
-        operator = e.target.textContent;
-        previousDisplay.textContent = previousNum + ' ' + operator;
-        currentNum = '';
+        storeOperatorPreviousDisplay(e.target.textContent);
     //1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
     } else if (previousDisplay.textContent.includes('=')) {
-        operator = e.target.textContent;
         solution = Number(solution.toFixed(4));
         previousNum = solution;
-        previousDisplay.textContent = previousNum + ' ' + operator;
-        currentNum = '';
+        storeOperatorPreviousDisplay(e.target.textContent);
     }
 
 
 } ));
 
-function operatorFunction(op) {
-    //store operator 
+function storeOperatorPreviousDisplay(op) {
     operator = op;
-    //store current number as previous number
-    //if = button has been used before, use the solution number as previous num
-    if (solution === '') {
-        previousNum = currentNum;
-        currentDisplay.textContent = previousNum;
-    } else {
-        previousNum = solution;
-    }
     previousDisplay.textContent = previousNum + ' ' + operator;
     currentNum = '';
-
 }
 
 //perform operator on current and previous number 
