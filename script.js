@@ -44,6 +44,9 @@ function numberFunction(number) {
 
 
 //operator buttons, store display number as previous number 
+    // 1 + first equation, store current num as previousNum and operator 
+    //1 + 2 = 3, - store solution as previousNum, operator 
+    // 1 + 2, - , stores solution as previousNum, new operator 
 //Store operator 
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
     console.log(previousNum, operator, currentNum);
@@ -89,7 +92,8 @@ function makeSolution() {
     solution = Number(solution.toFixed(4));
     currentDisplay.textContent = solution;
     previousNum = solution;
-    currentNum  = '';
+    //THis doesn't allow users to add numbers to the end of the solution number
+    currentNum  = solution.toString();
 }
 
 //clear everything
