@@ -58,7 +58,7 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
     //if 1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
     } else if (previousDisplay.textContent.includes('=')) {
         solution = Number(solution.toFixed(4));
-        previousNum = solution;
+        previousNum = currentNum;
         storeOperatorPreviousDisplay(e.target.textContent);
     }
 } ));
@@ -104,14 +104,24 @@ clearButton.onclick = () => {
 
 //Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
-    if (currentNum == '') {
-        solution = solution.toString();
-        solution = solution.slice(0,-1);
-        currentDisplay.textContent = solution;
+    //if equal sign has been used, every time delete is pressed remove one digit, until there are no more digits then return 0
+    if (previousDisplay.textContent.includes('=')) {
+        currentNum = currentNum.toString();
+        if (currentNum.length > 1) {
+            currentNum = currentNum.slice(0,-1);
+        } else {
+            currentNum = 0; 
+        }
+    //delete solution when 1 + 2 = 3 delete will delete 3, make it zero
     } else {
-        currentNum = currentNum.slice(0,-1);
-        currentDisplay.textContent = currentNum;
+        currentNum = currentDisplay.textContent;
+        if (currentNum.length > 1) {
+            currentNum = currentNum.slice(0,-1);
+        } else {
+            currentNum = 0; 
+        }
     }
+    currentDisplay.textContent = currentNum;
 }
 
 // let key = '';
