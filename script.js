@@ -55,9 +55,10 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
 function operatorFunction(op) {
     //store operator 
     operator = op;
+    console.log('sol: ' + solution + ' ' + 'prev: ' + previousNum);
     //store current number as previous number, if it is the first thing entered on calculator 
     //if = button has been used before, use the solution number as previous num
-    if (solution == '') {
+    if (solution === '') {
         previousNum = currentNum;
     } else {
         previousNum = solution;
@@ -70,7 +71,7 @@ function operatorFunction(op) {
 //perform operator on current and previous number 
 equalButton.onclick = () => {
     //if no previous or current number don't respond 
-    if (currentNum == '' || previousNum == '') {
+    if (currentNum === '' || previousNum === '') {
         return
     }
     makeSolution()
@@ -167,6 +168,7 @@ const divide = function(num1, num2) {
 function operate(num1,operator,num2) {
     num1 = Number(num1);
     num2 = Number(num2);
+    
     switch (operator) {
         case '×': 
         return multiply(num1, num2);
