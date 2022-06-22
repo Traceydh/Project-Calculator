@@ -35,7 +35,7 @@ function numberFunction(number) {
         return
     //only allow user to enter one number after decimal point 
         //split string, count length after decimal place
-    } else if (currentNum.includes('.') && currentNum.split('.')[1].length > 0) {
+    } else if (currentNum.toString().includes('.') && currentNum.toString().split('.')[1].length > 0) {
         return;
     }
     currentNum += number;
@@ -45,18 +45,34 @@ function numberFunction(number) {
 
 //operator buttons, store display number as previous number 
     // 1 + first equation, store current num as previousNum and operator 
-    //1 + 2 = 3, - store solution as previousNum, operator 
     // 1 + 2, - , stores solution as previousNum, new operator 
 //Store operator 
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    console.log(previousNum, operator, currentNum);
-    //if previous number hasn't been set. Which means this is the very first calculation. 
-    if (previousNum == '' || currentNum == '') {
-        operatorFunction(e.target.textContent);
-    //If equal signs is pressed 
-    } else {
-        makeSolution();
+    //1 + , if there is no previousNum this is the first equation, store current num as previousNum and operator
+    if (previousNum === '') {
+        operator = e.target.textContent;
+        previousNum = currentNum;
+        currentNum = '';
+        previousDisplay.textContent = previousNum + ' ' + operator;
+    //If 1 + 2, work out solution and store as previous num, store new operator 
+    } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
+        //display solution 
+        solution = operate(previousNum, operator, currentNum);
+        solution = Number(solution.toFixed(4));
+        previousNum = solution;
+        operator = e.target.textContent;
+        previousDisplay.textContent = previousNum + ' ' + operator;
+        currentNum = '';
+    //1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
+    } else if (previousDisplay.textContent.includes('=')) {
+        operator = e.target.textContent;
+        solution = Number(solution.toFixed(4));
+        previousNum = solution;
+        previousDisplay.textContent = previousNum + ' ' + operator;
+        currentNum = '';
     }
+
+
 } ));
 
 function operatorFunction(op) {
@@ -84,16 +100,18 @@ equalButton.onclick = () => {
     makeSolution()
 }
 
-//execute operate button, display solution
+//execute operate button
+    //e.g.1 + 2 = 3, - store solution as previousNum and display solution
 function makeSolution() {
+    //display solution 
     solution = operate(previousNum, operator, currentNum);
-    previousDisplay.textContent = previousNum + ' ' + operator + ' ' + currentNum;
-    //display up to 4 decimal places if required 
+    previousDisplay.textContent = `${previousNum} ${operator} ${currentNum} = `;
+        //display up to 4 decimal places if required 
     solution = Number(solution.toFixed(4));
     currentDisplay.textContent = solution;
+    //store solution as previousNum
     previousNum = solution;
-    //THis doesn't allow users to add numbers to the end of the solution number
-    currentNum  = solution.toString();
+    currentNum = solution;
 }
 
 //clear everything
