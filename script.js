@@ -48,7 +48,8 @@ function numberFunction(number) {
 }
 
 //operator buttons,there are three scenarios which should do different things
-operatorButton.forEach(button => button.addEventListener('click', (e) => { operatorBtn(e.target.textContent)}));
+operatorButton.forEach(button => button.addEventListener('click', (e) => {
+    operatorBtn(e.target.textContent)}));
 //function that the operator buttons use 
  function operatorBtn(textContent) {
         //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
@@ -181,13 +182,32 @@ function operate(num1,operator,num2) {
 }
 
 //Keyboard support 
+//object for + , detect two keys being pressed at the same time 
+let plusKey = {
+    key1: false,
+    key2: false
+};
+
+//function that checks if two keys are being held down 
+function checkKeysPressed(key, object) {
+    if (key == 16) {
+        object.key1 = true;
+    } else if (key == 187 || key == 56) {
+        object.key2 = true;
+    }
+    if (object.key1 && object.key2) {
+        operatorBtn('+');
+        object.key1 = false;
+        object.key2 = false;
+    }
+}
+
 //when someone hits a key on the keyboard it will do the same thing as clicking on button 
 window.addEventListener('keydown', function(e){
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
-    console.log(key.textContent);
-    //stop function running if invalid key is pressed 
+    checkKeysPressed(e.keyCode, plusKey);
     if (!key) {
-        return
+        return //stop function running if invalid key is pressed 
     }
     //when number is pressed, display number on screen 
     switch (key.textContent) {
@@ -213,8 +233,7 @@ window.addEventListener('keydown', function(e){
         case '=':
             makeSolution();
             break;
-        case '×': 
-        case '+': 
+        case '×':
         case '−': 
         case '÷': 
             operatorBtn(key.textContent);
