@@ -186,9 +186,13 @@ function operate(num1,operator,num2) {
 //when someone hits a key on the keyboard it will do the same thing as clicking on button 
 window.addEventListener('keydown', function(e){
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
-    console.log(key.textContent);
+    //console.log(key.textContent);
     //stop function running if invalid key is pressed 
-    if (!key) return
+    if (!key) {
+        return
+    } else if (e.keyCode == 8) {
+        deleteBtn();
+    }
     //when number is pressed, display number on screen 
     switch (key.textContent) {
         case '0':
@@ -204,6 +208,7 @@ window.addEventListener('keydown', function(e){
             numberFunction(key.textContent);
             break;
     }
+
     //When operator is pressed, execute operator functions 
 
 })
