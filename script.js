@@ -124,7 +124,9 @@ function clear() {
 }
 
 //Delete one digit from current display and current Number 
-deleteButton.onclick = () => {
+deleteButton.onclick = deleteBtn;
+//Delete function 
+function deleteBtn() {
     //if equal sign has been used, every time delete is pressed remove one digit, until there are no more digits then return 0
     if (previousDisplay.textContent.includes('=')) {
         currentNum = currentNum.toString();
