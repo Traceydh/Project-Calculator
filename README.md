@@ -9,9 +9,10 @@ This calculator
 - has a clear function which wipes existing data 
 - doesn't let user add more than one number after the decimal point 
 - doesn't let user add more than one decimal point 
-- has a delete function which deletes one digit from current value 
+- has a delete function which deletes one digit from current value, returns 0 when no digits left to be deleted
+- displays message when user divides by 0 
 
 
 To do in future:
 - add keyboard support 
-- displays snarky message when user divides by 0 
+
