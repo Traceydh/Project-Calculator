@@ -44,36 +44,31 @@ function numberFunction(number) {
 
 //operator buttons,there are three scenarios which should do different things
 operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    //if 1 + , if there is no previousNum this is the first equation, store current num as previousNum and operator
+    //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
     if (previousNum === '') {
         previousNum = currentNum;
         storeOperatorPreviousDisplay(e.target.textContent);
-    //If 1 + 2, work out solution and store as previous num, store new operator 
+    //if user tries to divide by 0 with an operator
+    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0) {
+        alert('pls stop don\'t divide by 0, who knows what will happen...');
+        currentNum = '';
+        currentDisplay.textContent = currentNum;
+        return
+    //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
+    } else if (previousDisplay.textContent.includes('=')) {
+        solution = Number(solution.toFixed(4));
+        previousNum = currentNum;
+        storeOperatorPreviousDisplay(e.target.textContent);
+    //If 1 + 2 op, work out solution and store as previous num, store new operator 
     } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
         //display solution 
         solution = operate(previousNum, operator, currentNum);
         solution = Number(solution.toFixed(4));
         previousNum = solution;
         storeOperatorPreviousDisplay(e.target.textContent);
-    //if 1 + 2 = 3, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
-    } else if (previousDisplay.textContent.includes('=')) {
-        solution = Number(solution.toFixed(4));
-        previousNum = currentNum;
-        storeOperatorPreviousDisplay(e.target.textContent);
-    } else if (currentNum == '0' && operator == '÷') {
-        currentNum = currentDisplay.textContent;
-        if (currentNum.length > 1) {
-            currentNum = currentNum.slice(0,-1);
-        } else if (operator === '÷' && currentNum === '0') {
-            alert('pls stop don\'t divide by 0, who knows what will happen...');
-            currentNum = '';
-            currentDisplay.textContent = currentNum;
-            return
-        } else {
-            currentNum = 0; 
-        }
     }
-} ));
+    }
+ ));
 
 function storeOperatorPreviousDisplay(op) {
     operator = op;
@@ -121,7 +116,7 @@ clearButton.onclick = () => {
     previousDisplay.textContent = '';
 }
 
-//ERROR when you type number after 0 is displayed it doesn't leave the string
+//ERROR when you type number after 0 is displayed it doesn't leave the
 //Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
     //if equal sign has been used, every time delete is pressed remove one digit, until there are no more digits then return 0
