@@ -82,7 +82,10 @@ function storeOperatorPreviousDisplay(op) {
 }
 
 //perform operator on current and previous number 
-equalButton.onclick = () => {
+equalButton.onclick = makeSolution;
+
+function makeSolution() {
+    //e.g.1 + 2 = 3, - store solution as previousNum and display solution
     //if no previous or current number don't respond 
     if (currentNum === '' || previousNum === '') {
         return
@@ -94,12 +97,6 @@ equalButton.onclick = () => {
         currentNum = '';
         return
     }
-    makeSolution()
-}
-
-//execute operate button
-    //e.g.1 + 2 = 3, - store solution as previousNum and display solution
-function makeSolution() {
     //display solution 
     solution = operate(previousNum, operator, currentNum);
     previousDisplay.textContent = `${previousNum} ${operator} ${currentNum} = `;
@@ -112,9 +109,9 @@ function makeSolution() {
 }
 
 //clear everything
-clearButton.onclick = clear;
+clearButton.onclick = allClear;
 //clear function 
-function clear() {
+function allClear() {
     currentNum = '';
     previousNum = '';
     operator = '';
@@ -207,11 +204,13 @@ window.addEventListener('keydown', function(e){
             break;
         case 'Delete': 
             deleteBtn();
-            break
+            break;
         case 'AC':
-            clear();
-            break
-        
+            allClear();
+            break;
+        case '=':
+            makeSolution();
+            break;
     }
 
     //When operator is pressed, execute operator functions 
