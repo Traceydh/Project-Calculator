@@ -48,32 +48,33 @@ function numberFunction(number) {
 }
 
 //operator buttons,there are three scenarios which should do different things
-operatorButton.forEach(button => button.addEventListener('click', (e) => {
-    //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
-    if (previousNum === '') {
-        previousNum = currentNum;
-        storeOperatorPreviousDisplay(e.target.textContent);
-    //if user tries to divide by 0 with an operator
-    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0 && !previousDisplay.textContent.includes('=')) {
-        alert('pls stop don\'t divide by 0, who knows what will happen...');
-        currentDisplay.textContent = currentNum;
-        currentNum = '';
-        return
-    //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
-    } else if (previousDisplay.textContent.includes('=')) {
-        solution = Number(solution.toFixed(4));
-        previousNum = currentNum;
-        storeOperatorPreviousDisplay(e.target.textContent);
-    //If 1 + 2 op, work out solution and store as previous num, store new operator 
-    } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
-        //display solution 
-        solution = operate(previousNum, operator, currentNum);
-        solution = Number(solution.toFixed(4));
-        previousNum = solution;
-        storeOperatorPreviousDisplay(e.target.textContent);
-    }
-    }
- ));
+operatorButton.forEach(button => button.addEventListener('click', (e) => { operatorBtn(e.target.textContent)}));
+//function that the operator buttons use 
+ function operatorBtn(textContent) {
+        //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
+        if (previousNum === '') {
+            previousNum = currentNum;
+            storeOperatorPreviousDisplay(textContent);
+        //if user tries to divide by 0 with an operator
+        } else if (previousDisplay.textContent.includes('÷') && currentNum == 0 && !previousDisplay.textContent.includes('=')) {
+            alert('pls stop don\'t divide by 0, who knows what will happen...');
+            currentDisplay.textContent = currentNum;
+            currentNum = '';
+            return
+        //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
+        } else if (previousDisplay.textContent.includes('=')) {
+            solution = Number(solution.toFixed(4));
+            previousNum = currentNum;
+            storeOperatorPreviousDisplay(textContent);
+        //If 1 + 2 op, work out solution and store as previous num, store new operator 
+        } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
+            //display solution 
+            solution = operate(previousNum, operator, currentNum);
+            solution = Number(solution.toFixed(4));
+            previousNum = solution;
+            storeOperatorPreviousDisplay(textContent);
+        }
+ }
 
 function storeOperatorPreviousDisplay(op) {
     operator = op;
@@ -200,6 +201,7 @@ window.addEventListener('keydown', function(e){
         case '7':
         case '8':
         case '9':
+        case '.':
             numberFunction(key.textContent);
             break;
         case 'Delete': 
@@ -215,29 +217,7 @@ window.addEventListener('keydown', function(e){
         case '+': 
         case '−': 
         case '÷': 
-                //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
-    if (previousNum === '') {
-        previousNum = currentNum;
-        storeOperatorPreviousDisplay(key.textContent);
-    //if user tries to divide by 0 with an operator
-    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0) {
-        alert('pls stop don\'t divide by 0, who knows what will happen...');
-        currentDisplay.textContent = currentNum;
-        currentNum = '';
-        return
-    //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
-    } else if (previousDisplay.textContent.includes('=')) {
-        solution = Number(solution.toFixed(4));
-        previousNum = currentNum;
-        storeOperatorPreviousDisplay(key.textContent);
-    //If 1 + 2 op, work out solution and store as previous num, store new operator 
-    } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
-        //display solution 
-        solution = operate(previousNum, operator, currentNum);
-        solution = Number(solution.toFixed(4));
-        previousNum = solution;
-        storeOperatorPreviousDisplay(key.textContent);
-    }
+            operatorBtn(key.textContent);
         break
 }
 
