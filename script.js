@@ -37,9 +37,14 @@ function numberFunction(number) {
         //split string, count length after decimal place
     } else if (currentNum.toString().includes('.') && currentNum.toString().split('.')[1].length > 0) {
         return;
+    //if currentNum is 0, add number to it instead of concatenating, from deleteButton function
+    } else if (currentNum === 0) {
+        currentNum += Number(number);
+    } else {
+        currentNum += number;
     }
-    currentNum += number;
-    currentDisplay.textContent = currentNum;   
+    currentDisplay.textContent = currentNum; 
+  
 }
 
 //operator buttons,there are three scenarios which should do different things
