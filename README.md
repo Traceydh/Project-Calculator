@@ -13,3 +13,5 @@ This calculator has the following features:
 - has a delete function which deletes one digit from current value, returns 0 when no digits left to be deleted
 - displays message when user divides by 0 
 - supports keyboard
+
+Check out live demo [here](https://traceydh.github.io/Project-Calculator/)
