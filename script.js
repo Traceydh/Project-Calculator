@@ -112,7 +112,9 @@ function makeSolution() {
 }
 
 //clear everything
-clearButton.onclick = () => {
+clearButton.onclick = clear;
+//clear function 
+function clear() {
     currentNum = '';
     previousNum = '';
     operator = '';
@@ -121,7 +123,6 @@ clearButton.onclick = () => {
     previousDisplay.textContent = '';
 }
 
-//ERROR when you type number after 0 is displayed it doesn't leave the
 //Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
     //if equal sign has been used, every time delete is pressed remove one digit, until there are no more digits then return 0
@@ -201,5 +202,7 @@ window.addEventListener('keydown', function(e){
             numberFunction(key.textContent);
             break;
     }
+    //When operator is pressed, execute operator functions 
+
 })
 
