@@ -60,6 +60,18 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
         solution = Number(solution.toFixed(4));
         previousNum = currentNum;
         storeOperatorPreviousDisplay(e.target.textContent);
+    } else if (currentNum == '0' && operator == '÷') {
+        currentNum = currentDisplay.textContent;
+        if (currentNum.length > 1) {
+            currentNum = currentNum.slice(0,-1);
+        } else if (operator === '÷' && currentNum === '0') {
+            alert('pls stop don\'t divide by 0, who knows what will happen...');
+            currentNum = '';
+            currentDisplay.textContent = currentNum;
+            return
+        } else {
+            currentNum = 0; 
+        }
     }
 } ));
 
@@ -73,6 +85,13 @@ function storeOperatorPreviousDisplay(op) {
 equalButton.onclick = () => {
     //if no previous or current number don't respond 
     if (currentNum === '' || previousNum === '') {
+        return
+    }
+    //don't let user divide by 0
+    else if (operator === '÷' && currentNum == '0') {
+        alert('pls stop don\'t divide by 0, who knows what will happen...');
+        currentNum = '';
+        currentDisplay.textContent = currentNum;
         return
     }
     makeSolution()
@@ -102,6 +121,7 @@ clearButton.onclick = () => {
     previousDisplay.textContent = '';
 }
 
+//ERROR when you type number after 0 is displayed it doesn't leave the string
 //Delete one digit from current display and current Number 
 deleteButton.onclick = () => {
     //if equal sign has been used, every time delete is pressed remove one digit, until there are no more digits then return 0
@@ -123,42 +143,6 @@ deleteButton.onclick = () => {
     }
     currentDisplay.textContent = currentNum;
 }
-
-// let key = '';
-// //listen for if user presses a key on keyboard 
-// window.addEventListener('keydown', (e) => {
-//     key = document.querySelector(`button[data-key="${e.keyCode}"]`);
-//     //display numbers if pressed 
-//     switch (key.textContent) {
-//         case '0':
-//         case '1':
-//         case '2':
-//         case '3':
-//         case '4':
-//         case '5':
-//         case '6':
-//         case '7':
-//         case '8':
-//         case '9':
-//             numberFunction(key.textContent);
-//             break
-//     }
-//     //do operator function is operator is pressed 
-//     if (e.keyCode == 189 && (previousNum == '' || currentNum == '')) {
-//         operatorFunction(key.textContent);
-//     } else {
-//         makeSolution();
-//     }
-//     //check if shift is being held down to get the + symbol 
-//     if (e.shiftKey == true && e.keyCode == 187) {
-//         console.log('+ clicked');
-//     }
-//     //check if shift is being held down to get the * symbol
-//     if (e.shiftKey == true && e.keyCode == 56) {
-//         console.log('* clicked');
-//     }
-// } );
-
 
 //ADD function 
 const add = function(num1, num2) {
