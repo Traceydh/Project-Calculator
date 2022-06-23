@@ -178,3 +178,12 @@ function operate(num1,operator,num2) {
         return divide(num1, num2);
     }
 }
+
+//Keyboard support 
+//when someone hits a key on the keyboard it will do the same thing as clicking on button 
+window.addEventListener('keydown', function(e){
+    const key = document.querySelector(`[data-key="${e.keyCode}"]`);
+    console.log(key.textContent);
+    //stop function running 
+    if (!key) return
+})
