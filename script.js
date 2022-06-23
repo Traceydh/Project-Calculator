@@ -190,8 +190,6 @@ window.addEventListener('keydown', function(e){
     //stop function running if invalid key is pressed 
     if (!key) {
         return
-    } else if (e.keyCode == 8) {
-        deleteBtn();
     }
     //when number is pressed, display number on screen 
     switch (key.textContent) {
@@ -207,6 +205,13 @@ window.addEventListener('keydown', function(e){
         case '9':
             numberFunction(key.textContent);
             break;
+        case 'Delete': 
+            deleteBtn();
+            break
+        case 'AC':
+            clear();
+            break
+        
     }
 
     //When operator is pressed, execute operator functions 
