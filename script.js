@@ -54,7 +54,7 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
         previousNum = currentNum;
         storeOperatorPreviousDisplay(e.target.textContent);
     //if user tries to divide by 0 with an operator
-    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0) {
+    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0 && !previousDisplay.textContent.includes('=')) {
         alert('pls stop don\'t divide by 0, who knows what will happen...');
         currentDisplay.textContent = currentNum;
         currentNum = '';
@@ -183,7 +183,7 @@ function operate(num1,operator,num2) {
 //when someone hits a key on the keyboard it will do the same thing as clicking on button 
 window.addEventListener('keydown', function(e){
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
-    //console.log(key.textContent);
+    console.log(key.textContent);
     //stop function running if invalid key is pressed 
     if (!key) {
         return
@@ -211,9 +211,35 @@ window.addEventListener('keydown', function(e){
         case '=':
             makeSolution();
             break;
+        case '×': 
+        case '+': 
+        case '−': 
+        case '÷': 
+                //if 1 + op, if there is no previousNum this is the first equation, store current num as previousNum and operator
+    if (previousNum === '') {
+        previousNum = currentNum;
+        storeOperatorPreviousDisplay(key.textContent);
+    //if user tries to divide by 0 with an operator
+    } else if (previousDisplay.textContent.includes('÷') && currentNum == 0) {
+        alert('pls stop don\'t divide by 0, who knows what will happen...');
+        currentDisplay.textContent = currentNum;
+        currentNum = '';
+        return
+    //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
+    } else if (previousDisplay.textContent.includes('=')) {
+        solution = Number(solution.toFixed(4));
+        previousNum = currentNum;
+        storeOperatorPreviousDisplay(key.textContent);
+    //If 1 + 2 op, work out solution and store as previous num, store new operator 
+    } else if (previousNum !== '' && !previousDisplay.textContent.includes('=')) {
+        //display solution 
+        solution = operate(previousNum, operator, currentNum);
+        solution = Number(solution.toFixed(4));
+        previousNum = solution;
+        storeOperatorPreviousDisplay(key.textContent);
     }
-
-    //When operator is pressed, execute operator functions 
+        break
+}
 
 })
 
