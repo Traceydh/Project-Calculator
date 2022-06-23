@@ -21,7 +21,7 @@ const currentDisplay = document.querySelector('#currentDisplay');
 currentDisplay.textContent = '0';
 const previousDisplay = document.querySelector('#previousDisplay');
 
-//Display number user is typing
+//Display number user clicks
 numberButton.forEach(button => button.addEventListener('click', (e) => {
     numberFunction(e.target.textContent);
 } ));
@@ -184,6 +184,22 @@ function operate(num1,operator,num2) {
 window.addEventListener('keydown', function(e){
     const key = document.querySelector(`[data-key="${e.keyCode}"]`);
     console.log(key.textContent);
-    //stop function running 
+    //stop function running if invalid key is pressed 
     if (!key) return
+    //when number is pressed, display number on screen 
+    switch (key.textContent) {
+        case '0':
+        case '1':
+        case '2':
+        case '3':
+        case '4':
+        case '5':
+        case '6':
+        case '7':
+        case '8':
+        case '9':
+            numberFunction(key.textContent);
+            break;
+    }
 })
+
