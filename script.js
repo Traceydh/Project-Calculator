@@ -51,8 +51,8 @@ operatorButton.forEach(button => button.addEventListener('click', (e) => {
     //if user tries to divide by 0 with an operator
     } else if (previousDisplay.textContent.includes('÷') && currentNum == 0) {
         alert('pls stop don\'t divide by 0, who knows what will happen...');
-        currentNum = '';
         currentDisplay.textContent = currentNum;
+        currentNum = '';
         return
     //if 1 + 2 = 3 op, if i press the operator now, solution should be stored as previousNum, new operator stored, waiting for currentNum 
     } else if (previousDisplay.textContent.includes('=')) {
@@ -85,8 +85,8 @@ equalButton.onclick = () => {
     //don't let user divide by 0
     else if (operator === '÷' && currentNum == '0') {
         alert('pls stop don\'t divide by 0, who knows what will happen...');
-        currentNum = '';
         currentDisplay.textContent = currentNum;
+        currentNum = '';
         return
     }
     makeSolution()
